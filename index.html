@@ -469,6 +469,23 @@
             <div class="m-lbl">С онлайн-калькулятором</div>
           </div>
         </div>
+
+        <!-- Live Visits Panel -->
+        <div style="margin-top:20px; background:#0c1322; border:1px solid #1e3a8a; border-radius:12px; padding:16px 20px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+            <div style="display:flex; align-items:center; gap:8px;">
+              <span style="display:inline-block; width:10px; height:10px; border-radius:50%; background:#10b981; box-shadow:0 0 8px #10b981;"></span>
+              <strong style="color:#fff; font-size:14px;">Live-лента: Переходы на сайты из рассылки</strong>
+            </div>
+            <div style="display:flex; gap:10px;">
+              <a href="https://ntfy.sh/b2b_showcase_visits_mark2026" target="_blank" style="font-size:12px; color:#60a5fa; text-decoration:underline;">🔔 Включить Push на телефон</a>
+              <button onclick="loadLiveVisits()" style="background:#1e293b; border:1px solid #334155; color:#94a3b8; padding:3px 10px; border-radius:6px; font-size:11.5px; cursor:pointer;">🔄 Обновить</button>
+            </div>
+          </div>
+          <div id="liveVisitsFeed" style="display:flex; gap:10px; overflow-x:auto; padding-bottom:6px; font-size:13px; color:#94a3b8;">
+            Загрузка активности...
+          </div>
+        </div>
       </div>
     </header>
 
@@ -573,6 +590,45 @@
       document.getElementById('authOverlay').style.display = 'none';
       document.getElementById('catalogApp').style.display = 'block';
       initCatalog();
+      loadLiveVisits();
+      setInterval(loadLiveVisits, 30000);
+    }
+
+    function loadLiveVisits() {
+      const feed = document.getElementById('liveVisitsFeed');
+      fetch('https://ntfy.sh/b2b_showcase_visits_mark2026/json?poll=1&since=24h')
+        .then(res => res.text())
+        .then(text => {
+          const lines = text.trim().split('\n').filter(Boolean);
+          if (lines.length === 0) {
+            feed.innerHTML = '<span style="color:#64748b;">Пока нет новых переходов. Они появятся здесь сразу, как клиенты откроют ссылки из писем.</span>';
+            return;
+          }
+          const events = lines.map(l => {
+            try { return JSON.parse(l); } catch(e) { return null; }
+          }).filter(e => e && e.event === 'message').reverse();
+
+          if (events.length === 0) {
+            feed.innerHTML = '<span style="color:#64748b;">Ожидание переходов...</span>';
+            return;
+          }
+
+          feed.innerHTML = events.slice(0, 10).map(e => {
+            const timeStr = new Date(e.time * 1000).toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
+            const title = e.title ? e.title.replace('👀 Просмотр: ', '') : 'Компания';
+            const firstLine = (e.message || '').split('\n')[0] || '';
+            return `
+              <div style="background:#162035; border:1px solid #283958; border-radius:8px; padding:8px 12px; min-width:220px; flex-shrink:0;">
+                <div style="font-size:11px; color:#10b981; font-weight:700;">🟢 ${timeStr}</div>
+                <div style="font-weight:700; color:#fff; font-size:13px; margin:2px 0;">${title}</div>
+                <div style="font-size:11.5px; color:#94a3b8;">${firstLine}</div>
+              </div>
+            `;
+          }).join('');
+        })
+        .catch(() => {
+          feed.innerHTML = '<span style="color:#64748b;">Лента обновляется...</span>';
+        });
     }
 
     function showToast(msg) {
