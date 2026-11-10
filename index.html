@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>B2B Showcase Russia — 35 000+ компаний с персональными сайтами</title>
-  <meta name="description" content="Реестр 35,000+ проверенных компаний России в 10 высокомаржинальных нишах с индивидуальными готовыми сайтами и интерактивными калькуляторами.">
+  <title>B2B Showcase Russia — Реестр компаний</title>
+  <meta name="description" content="Закрытый реестр 35,000+ проверенных сервисных компаний России с готовыми сайтами.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
@@ -28,22 +28,100 @@
       background-color: var(--bg);
       color: var(--text);
       line-height: 1.5;
-      padding-bottom: 80px;
+      min-height: 100vh;
     }
 
     a { text-decoration: none; color: inherit; }
+    .container { max-width: 1360px; margin: 0 auto; padding: 0 20px; }
 
-    .container {
-      max-width: 1360px;
-      margin: 0 auto;
-      padding: 0 20px;
+    /* Auth Screen */
+    .auth-wrapper {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: radial-gradient(circle at 50% 20%, #1e293b77 0%, transparent 75%);
+    }
+    .auth-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 40px 32px;
+      width: 100%;
+      max-width: 420px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    }
+    .auth-icon {
+      font-size: 44px;
+      margin-bottom: 16px;
+      display: inline-block;
+    }
+    .auth-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .auth-sub {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+    .auth-input {
+      width: 100%;
+      background: #0b0f19;
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 13px 16px;
+      color: #fff;
+      font-size: 15px;
+      outline: none;
+      margin-bottom: 14px;
+      text-align: center;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .auth-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+    }
+    .auth-submit-btn {
+      width: 100%;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 13px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 14.5px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .auth-submit-btn:hover { background: var(--primary-hover); }
+    .auth-error {
+      color: #f87171;
+      font-size: 13px;
+      margin-top: 12px;
+      display: none;
     }
 
-    /* Header */
+    /* Catalog Content (Protected) */
+    #catalogApp { display: none; padding-bottom: 80px; }
+
     header {
-      padding: 44px 0 32px;
+      padding: 38px 0 28px;
       border-bottom: 1px solid var(--card-border);
       background: radial-gradient(circle at 50% 0%, #1e293b55 0%, transparent 75%);
+    }
+
+    .top-bar-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
     }
 
     .badge-top {
@@ -57,28 +135,39 @@
       color: #93c5fd;
       font-size: 13px;
       font-weight: 600;
-      margin-bottom: 16px;
     }
+
+    .logout-btn {
+      background: #1f293d;
+      border: 1px solid #374151;
+      color: #94a3b8;
+      padding: 5px 12px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.18s;
+    }
+    .logout-btn:hover { color: #f87171; border-color: #ef4444; }
 
     h1 {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 38px;
+      font-size: 36px;
       font-weight: 800;
       letter-spacing: -0.02em;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
     .header-desc {
-      font-size: 16px;
+      font-size: 15px;
       color: var(--text-muted);
       max-width: 780px;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
 
-    /* Metrics Bar */
     .metrics-bar {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -97,52 +186,44 @@
       font-weight: 700;
       color: #60a5fa;
     }
-    .m-lbl {
-      font-size: 12.5px;
-      color: var(--text-muted);
-      margin-top: 2px;
-    }
+    .m-lbl { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
 
     /* Controls */
     .controls-panel {
-      padding: 26px 0 16px;
+      padding: 22px 0 14px;
       position: sticky;
       top: 0;
-      background: rgba(11, 15, 25, 0.94);
+      background: rgba(11, 15, 25, 0.95);
       backdrop-filter: blur(12px);
       z-index: 100;
       border-bottom: 1px solid rgba(31, 41, 61, 0.6);
     }
-
     .search-row {
       display: flex;
       gap: 12px;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
       flex-wrap: wrap;
     }
-
     .search-box {
       flex: 1;
       min-width: 280px;
       position: relative;
     }
-
     .search-input {
       width: 100%;
       background: #111827;
       border: 1px solid var(--card-border);
       border-radius: 10px;
-      padding: 14px 16px 14px 44px;
+      padding: 13px 16px 13px 44px;
       color: #fff;
       font-size: 15px;
       outline: none;
-      transition: border-color 0.2s, box-shadow 0.2s;
+      transition: 0.2s;
     }
     .search-input:focus {
       border-color: var(--primary);
       box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
     }
-
     .search-icon {
       position: absolute;
       left: 15px;
@@ -152,7 +233,6 @@
       color: var(--text-muted);
       pointer-events: none;
     }
-
     .csv-btn {
       display: inline-flex;
       align-items: center;
@@ -160,33 +240,30 @@
       background: #1f293d;
       border: 1px solid #374151;
       color: #f3f4f6;
-      padding: 0 20px;
+      padding: 0 18px;
       border-radius: 10px;
       font-weight: 600;
-      font-size: 14px;
+      font-size: 13.5px;
       cursor: pointer;
       transition: 0.2s;
       white-space: nowrap;
     }
-    .csv-btn:hover {
-      background: #374151;
-      border-color: #4b5563;
-    }
+    .csv-btn:hover { background: #374151; border-color: #4b5563; }
 
-    /* Niche Pills */
+    /* Pills */
     .niche-pills {
       display: flex;
       gap: 8px;
       overflow-x: auto;
-      padding-bottom: 6px;
+      padding-bottom: 4px;
       scrollbar-width: thin;
     }
     .niche-pill {
       background: #151e30;
       border: 1px solid #23314a;
-      padding: 7px 14px;
+      padding: 6px 13px;
       border-radius: 9999px;
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 600;
       color: #94a3b8;
       cursor: pointer;
@@ -194,17 +271,14 @@
       transition: all 0.2s ease;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 5px;
     }
-    .niche-pill:hover {
-      background: #1e293b;
-      color: #f8fafc;
-    }
+    .niche-pill:hover { background: #1e293b; color: #fff; }
     .niche-pill.active {
       background: var(--primary);
       border-color: var(--primary);
-      color: #ffffff;
-      box-shadow: 0 4px 14px rgba(59, 130, 246, 0.35);
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.35);
     }
     .pill-count {
       font-size: 11px;
@@ -214,23 +288,20 @@
       border-radius: 10px;
     }
 
-    /* Status Bar */
+    /* Grid */
     .status-bar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin: 20px 0 16px;
-      font-size: 14px;
+      margin: 18px 0 14px;
+      font-size: 13.5px;
       color: var(--text-muted);
     }
-
-    /* Grid */
     .biz-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
       gap: 18px;
     }
-
     .biz-card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
@@ -239,19 +310,17 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+      transition: transform 0.18s, border-color 0.18s;
     }
     .biz-card:hover {
       transform: translateY(-2px);
       border-color: #3b82f6;
-      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
     }
-
     .card-top {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       gap: 8px;
     }
     .card-niche {
@@ -276,113 +345,63 @@
       text-overflow: ellipsis;
       max-width: 140px;
     }
-
-    .card-name {
-      font-size: 17px;
-      font-weight: 700;
-      color: #fff;
-      line-height: 1.35;
-      margin-bottom: 8px;
-    }
-
-    .card-addr {
-      font-size: 13px;
-      color: var(--text-muted);
-      margin-bottom: 12px;
-      display: flex;
-      align-items: flex-start;
-      gap: 5px;
-    }
-
+    .card-name { font-size: 16.5px; font-weight: 700; color: #fff; margin-bottom: 6px; line-height: 1.35; }
+    .card-addr { font-size: 13px; color: var(--text-muted); margin-bottom: 12px; }
     .card-meta {
       display: flex;
       align-items: center;
-      gap: 14px;
-      font-size: 13px;
-      margin-bottom: 16px;
-      padding: 8px 12px;
+      gap: 12px;
+      font-size: 12.5px;
+      margin-bottom: 14px;
+      padding: 7px 10px;
       background: #0f1624;
       border-radius: 8px;
     }
-    .meta-star {
-      color: #fbbf24;
-      font-weight: 700;
-    }
-    .meta-phone {
-      color: #94a3b8;
-    }
-    .meta-phone a:hover {
-      color: #60a5fa;
-      text-decoration: underline;
-    }
-
-    .card-actions {
-      display: flex;
-      gap: 8px;
-      margin-top: 6px;
-    }
-
+    .meta-star { color: #fbbf24; font-weight: 700; }
+    .meta-phone a:hover { color: #60a5fa; }
+    .card-actions { display: flex; gap: 8px; }
     .btn-open {
       flex: 1;
       background: var(--primary);
       color: #fff;
       text-align: center;
-      padding: 10px 14px;
+      padding: 9px 12px;
       border-radius: 8px;
-      font-size: 13.5px;
+      font-size: 13px;
       font-weight: 700;
       transition: background 0.18s;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
+      gap: 5px;
     }
-    .btn-open:hover {
-      background: var(--primary-hover);
-    }
-
+    .btn-open:hover { background: var(--primary-hover); }
     .btn-copy {
       background: #1f293d;
       color: #e2e8f0;
       border: 1px solid #334155;
-      padding: 10px 12px;
+      padding: 9px 12px;
       border-radius: 8px;
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 600;
       cursor: pointer;
-      transition: all 0.18s;
-      display: flex;
-      align-items: center;
-      gap: 5px;
+      transition: 0.18s;
     }
-    .btn-copy:hover {
-      background: #334155;
-      border-color: #475569;
-      color: #fff;
-    }
+    .btn-copy:hover { background: #334155; color: #fff; }
 
-    /* Load more */
-    .load-more-wrap {
-      text-align: center;
-      margin-top: 36px;
-    }
+    .load-more-wrap { text-align: center; margin-top: 36px; }
     .btn-more {
       background: #1e293b;
       border: 1px solid #334155;
       color: #fff;
       font-weight: 700;
       font-size: 14px;
-      padding: 12px 32px;
+      padding: 11px 30px;
       border-radius: 10px;
       cursor: pointer;
-      transition: 0.2s;
     }
-    .btn-more:hover {
-      background: #334155;
-      border-color: #475569;
-    }
+    .btn-more:hover { background: #334155; }
 
-    /* Toast */
     .toast {
       position: fixed;
       bottom: 24px;
@@ -390,104 +409,117 @@
       background: #10b981;
       color: #064e3b;
       font-weight: 700;
-      font-size: 14px;
-      padding: 12px 22px;
+      font-size: 13.5px;
+      padding: 11px 20px;
       border-radius: 10px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
       transform: translateY(120%);
       opacity: 0;
-      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s;
+      transition: all 0.25s;
       z-index: 9999;
-      display: flex;
-      align-items: center;
-      gap: 8px;
     }
-    .toast.show {
-      transform: translateY(0);
-      opacity: 1;
-    }
-
-    @media (max-width: 768px) {
-      h1 { font-size: 26px; }
-      .biz-grid { grid-template-columns: 1fr; }
-    }
+    .toast.show { transform: translateY(0); opacity: 1; }
   </style>
 </head>
 <body>
 
-  <header>
-    <div class="container">
-      <div class="badge-top">⚡ B2B DIRECTORY &amp; SITE ENGINE 2026</div>
-      <h1>35 000+ компаний России с готовыми сайтами</h1>
-      <p class="header-desc">
-        Единый реестр проверенных сервисных компаний России без собственных сайтов. Для каждого бизнеса сгенерирован полноценный отдельный лендинг с интерактивным калькулятором, тарифами, отзывами и прямой связью.
+  <!-- Auth Gate -->
+  <div id="authOverlay" class="auth-wrapper">
+    <div class="auth-card">
+      <div class="auth-icon">🔒</div>
+      <h2 class="auth-title">Закрытый реестр B2B</h2>
+      <p class="auth-sub">
+        База и панель управления сайтами доступны только для авторизованных администраторов.
       </p>
-
-      <div class="metrics-bar">
-        <div class="metric-item">
-          <div class="m-num">35 047</div>
-          <div class="m-lbl">Компаний в базе</div>
-        </div>
-        <div class="metric-item">
-          <div class="m-num">10</div>
-          <div class="m-lbl">Маржинальных ниш</div>
-        </div>
-        <div class="metric-item">
-          <div class="m-num">307</div>
-          <div class="m-lbl">Городов РФ</div>
-        </div>
-        <div class="metric-item">
-          <div class="m-num">100%</div>
-          <div class="m-lbl">С онлайн-калькулятором</div>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <div class="controls-panel">
-    <div class="container">
-      <div class="search-row">
-        <div class="search-box">
-          <span class="search-icon">🔍</span>
-          <input type="text" id="searchInput" class="search-input" placeholder="Поиск по названию компании, городу, улице или телефону..." autocomplete="off">
-        </div>
-        <a href="russia_b2b_35000.csv" download class="csv-btn">
-          📥 Скачать базу (CSV 18.6 MB)
-        </a>
-      </div>
-
-      <div class="niche-pills" id="nichePills">
-        <button class="niche-pill active" data-niche="all">🌟 Все <span class="pill-count">35 047</span></button>
-        <button class="niche-pill" data-niche="detailing">✨ Детейлинг <span class="pill-count">7 978</span></button>
-        <button class="niche-pill" data-niche="evacuator">🚜 Эвакуаторы <span class="pill-count">6 612</span></button>
-        <button class="niche-pill" data-niche="remont">🔨 Ремонт квартир <span class="pill-count">3 897</span></button>
-        <button class="niche-pill" data-niche="himchistka">🛋️ Химчистка <span class="pill-count">3 528</span></button>
-        <button class="niche-pill" data-niche="kondicionery">❄️ Кондиционеры <span class="pill-count">2 925</span></button>
-        <button class="niche-pill" data-niche="potolki">🏠 Потолки <span class="pill-count">2 368</span></button>
-        <button class="niche-pill" data-niche="massage">💆 Массаж &amp; СПА <span class="pill-count">2 224</span></button>
-        <button class="niche-pill" data-niche="gruzoperevozki">🚚 Грузоперевозки <span class="pill-count">2 078</span></button>
-        <button class="niche-pill" data-niche="avtopodbor">🔍 Автоподбор <span class="pill-count">2 068</span></button>
-        <button class="niche-pill" data-niche="burenie">💧 Бурение скважин <span class="pill-count">1 369</span></button>
-      </div>
+      <form onsubmit="handleAuth(event)">
+        <input type="password" id="authPasswordInput" class="auth-input" placeholder="Введите ключ доступа..." autofocus>
+        <button type="submit" class="auth-submit-btn">Войти в панель</button>
+      </form>
+      <div id="authErrorMsg" class="auth-error">Неверный ключ доступа</div>
     </div>
   </div>
 
-  <main class="container">
-    <div class="status-bar">
-      <div id="resultsCount">Загрузка индекса...</div>
-      <div id="performanceBadge" style="font-size:12px; color:#64748b;">Мгновенный поиск</div>
+  <!-- Protected Catalog App -->
+  <div id="catalogApp">
+    <header>
+      <div class="container">
+        <div class="top-bar-flex">
+          <div class="badge-top">⚡ B2B DIRECTORY &amp; SITE ENGINE 2026</div>
+          <button class="logout-btn" onclick="logout()" title="Выйти и заблокировать каталог">🔒 Выйти</button>
+        </div>
+        <h1>35 000+ компаний России с готовыми сайтами</h1>
+        <p class="header-desc">
+          Единый реестр проверенных сервисных компаний России без собственных сайтов. Для каждого бизнеса сгенерирован полноценный отдельный лендинг с интерактивным калькулятором, тарифами, отзывами и прямой связью.
+        </p>
+
+        <div class="metrics-bar">
+          <div class="metric-item">
+            <div class="m-num">35 047</div>
+            <div class="m-lbl">Компаний в базе</div>
+          </div>
+          <div class="metric-item">
+            <div class="m-num">10</div>
+            <div class="m-lbl">Маржинальных ниш</div>
+          </div>
+          <div class="metric-item">
+            <div class="m-num">307</div>
+            <div class="m-lbl">Городов РФ</div>
+          </div>
+          <div class="metric-item">
+            <div class="m-num">100%</div>
+            <div class="m-lbl">С онлайн-калькулятором</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="controls-panel">
+      <div class="container">
+        <div class="search-row">
+          <div class="search-box">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="searchInput" class="search-input" placeholder="Поиск по названию компании, городу, улице или телефону..." autocomplete="off">
+          </div>
+          <a href="russia_b2b_35000.csv" download class="csv-btn">
+            📥 Скачать базу (CSV 18.0 MB)
+          </a>
+        </div>
+
+        <div class="niche-pills" id="nichePills">
+          <button class="niche-pill active" data-niche="all">🌟 Все <span class="pill-count">35 047</span></button>
+          <button class="niche-pill" data-niche="detailing">✨ Детейлинг <span class="pill-count">7 978</span></button>
+          <button class="niche-pill" data-niche="evacuator">🚜 Эвакуаторы <span class="pill-count">6 612</span></button>
+          <button class="niche-pill" data-niche="remont">🔨 Ремонт квартир <span class="pill-count">3 897</span></button>
+          <button class="niche-pill" data-niche="himchistka">🛋️ Химчистка <span class="pill-count">3 528</span></button>
+          <button class="niche-pill" data-niche="kondicionery">❄️ Кондиционеры <span class="pill-count">2 925</span></button>
+          <button class="niche-pill" data-niche="potolki">🏠 Потолки <span class="pill-count">2 368</span></button>
+          <button class="niche-pill" data-niche="massage">💆 Массаж &amp; СПА <span class="pill-count">2 224</span></button>
+          <button class="niche-pill" data-niche="gruzoperevozki">🚚 Грузоперевозки <span class="pill-count">2 078</span></button>
+          <button class="niche-pill" data-niche="avtopodbor">🔍 Автоподбор <span class="pill-count">2 068</span></button>
+          <button class="niche-pill" data-niche="burenie">💧 Бурение скважин <span class="pill-count">1 369</span></button>
+        </div>
+      </div>
     </div>
 
-    <div class="biz-grid" id="bizGrid"></div>
+    <main class="container">
+      <div class="status-bar">
+        <div id="resultsCount">Загрузка индекса...</div>
+        <div id="performanceBadge" style="font-size:12px; color:#64748b;">Мгновенный поиск</div>
+      </div>
 
-    <div class="load-more-wrap">
-      <button id="loadMoreBtn" class="btn-more" style="display:none;">Показать еще 48 компаний</button>
-    </div>
-  </main>
+      <div class="biz-grid" id="bizGrid"></div>
+
+      <div class="load-more-wrap">
+        <button id="loadMoreBtn" class="btn-more" style="display:none;">Показать еще 48 компаний</button>
+      </div>
+    </main>
+  </div>
 
   <div id="toast" class="toast">✓ Прямая ссылка скопирована в буфер обмена!</div>
 
   <script>
+    const MASTER_PASS = "2022Top";
+    const AUTH_KEY = "b2b_registry_unlocked_token";
+
     let allRecords = [];
     let filteredRecords = [];
     let renderedCount = 0;
@@ -507,121 +539,155 @@
       burenie: { title: "Бурение скважин", icon: "💧" }
     };
 
-    const searchInput = document.getElementById('searchInput');
-    const bizGrid = document.getElementById('bizGrid');
-    const loadMoreBtn = document.getElementById('loadMoreBtn');
-    const resultsCount = document.getElementById('resultsCount');
-    const toast = document.getElementById('toast');
+    function checkAuth() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const keyFromUrl = urlParams.get('key');
+      const savedAuth = localStorage.getItem(AUTH_KEY);
+
+      if (keyFromUrl === MASTER_PASS || savedAuth === MASTER_PASS) {
+        localStorage.setItem(AUTH_KEY, MASTER_PASS);
+        unlockCatalog();
+        return true;
+      }
+      return false;
+    }
+
+    function handleAuth(e) {
+      e.preventDefault();
+      const val = document.getElementById('authPasswordInput').value.trim();
+      if (val === MASTER_PASS) {
+        localStorage.setItem(AUTH_KEY, MASTER_PASS);
+        unlockCatalog();
+      } else {
+        document.getElementById('authErrorMsg').style.display = 'block';
+        document.getElementById('authPasswordInput').value = '';
+      }
+    }
+
+    function logout() {
+      localStorage.removeItem(AUTH_KEY);
+      window.location.href = window.location.pathname;
+    }
+
+    function unlockCatalog() {
+      document.getElementById('authOverlay').style.display = 'none';
+      document.getElementById('catalogApp').style.display = 'block';
+      initCatalog();
+    }
 
     function showToast(msg) {
+      const toast = document.getElementById('toast');
       toast.textContent = msg || '✓ Ссылка скопирована!';
       toast.classList.add('show');
       setTimeout(() => toast.classList.remove('show'), 2400);
     }
 
     function copyLink(id) {
-      const url = `${window.location.origin}${window.location.pathname.replace(/\/index\.html$/, '')}/site/?id=${id}`;
+      const url = `${window.location.origin}/site/?id=${id}`;
       navigator.clipboard.writeText(url).then(() => {
         showToast('✓ Ссылка на сайт компании скопирована!');
       }).catch(() => {
-        showToast('✓ Ссылка скопирована: ' + url);
+        showToast('✓ Ссылка: ' + url);
       });
     }
 
-    // Load search index
-    fetch('search_index.json')
-      .then(res => res.json())
-      .then(data => {
-        allRecords = data;
-        applyFilters();
-      })
-      .catch(err => {
-        resultsCount.textContent = 'Ошибка загрузки базы данных';
-        console.error(err);
+    function initCatalog() {
+      const searchInput = document.getElementById('searchInput');
+      const bizGrid = document.getElementById('bizGrid');
+      const loadMoreBtn = document.getElementById('loadMoreBtn');
+      const resultsCount = document.getElementById('resultsCount');
+
+      fetch('search_index.json')
+        .then(res => res.json())
+        .then(data => {
+          allRecords = data;
+          applyFilters();
+        })
+        .catch(err => {
+          resultsCount.textContent = 'Ошибка загрузки базы данных';
+        });
+
+      document.querySelectorAll('.niche-pill').forEach(pill => {
+        pill.addEventListener('click', () => {
+          document.querySelectorAll('.niche-pill').forEach(p => p.classList.remove('active'));
+          pill.classList.add('active');
+          activeNiche = pill.dataset.niche;
+          applyFilters();
+        });
       });
 
-    // Niche filter clicks
-    document.querySelectorAll('.niche-pill').forEach(pill => {
-      pill.addEventListener('click', () => {
-        document.querySelectorAll('.niche-pill').forEach(p => p.classList.remove('active'));
-        pill.classList.add('active');
-        activeNiche = pill.dataset.niche;
-        applyFilters();
-      });
-    });
-
-    // Search query input
-    let searchDebounce;
-    searchInput.addEventListener('input', () => {
-      clearTimeout(searchDebounce);
-      searchDebounce = setTimeout(applyFilters, 150);
-    });
-
-    function applyFilters() {
-      const q = (searchInput.value || '').trim().toLowerCase();
-      filteredRecords = allRecords.filter(item => {
-        if (activeNiche !== 'all' && item.t !== activeNiche) return false;
-        if (!q) return true;
-        return (
-          item.n.toLowerCase().includes(q) ||
-          item.c.toLowerCase().includes(q) ||
-          (item.a && item.a.toLowerCase().includes(q)) ||
-          item.p.includes(q)
-        );
+      let searchDebounce;
+      searchInput.addEventListener('input', () => {
+        clearTimeout(searchDebounce);
+        searchDebounce = setTimeout(applyFilters, 150);
       });
 
-      resultsCount.textContent = `Найдено компаний: ${filteredRecords.length.toLocaleString('ru-RU')}`;
-      bizGrid.innerHTML = '';
-      renderedCount = 0;
-      renderNextBatch();
-    }
+      function applyFilters() {
+        const q = (searchInput.value || '').trim().toLowerCase();
+        filteredRecords = allRecords.filter(item => {
+          if (activeNiche !== 'all' && item.t !== activeNiche) return false;
+          if (!q) return true;
+          return (
+            item.n.toLowerCase().includes(q) ||
+            item.c.toLowerCase().includes(q) ||
+            (item.a && item.a.toLowerCase().includes(q)) ||
+            item.p.includes(q)
+          );
+        });
 
-    function renderNextBatch() {
-      const batch = filteredRecords.slice(renderedCount, renderedCount + PAGE_SIZE);
-      const frag = document.createDocumentFragment();
-
-      batch.forEach(item => {
-        const nicheMeta = NICHE_NAMES[item.t] || { title: item.t, icon: "🏢" };
-        const card = document.createElement('div');
-        card.className = 'biz-card';
-
-        const siteUrl = `site/?id=${encodeURIComponent(item.i)}`;
-
-        card.innerHTML = `
-          <div>
-            <div class="card-top">
-              <span class="card-niche">${nicheMeta.icon} ${nicheMeta.title}</span>
-              <span class="card-city" title="${item.c}">${item.c}</span>
-            </div>
-            <h3 class="card-name">${escapeHtml(item.n)}</h3>
-            <div class="card-addr">📍 ${escapeHtml(item.a || item.c)}</div>
-            <div class="card-meta">
-              <span class="meta-star">⭐ ${item.r || '5.0'}</span>
-              <span style="color:#64748b;">•</span>
-              <span style="font-size:12.5px; color:#94a3b8;">${item.v || 12} отзывов</span>
-              <span style="color:#64748b;">•</span>
-              <span class="meta-phone"><a href="tel:${item.p}">📞 ${item.p}</a></span>
-            </div>
-          </div>
-          <div class="card-actions">
-            <a href="${siteUrl}" target="_blank" class="btn-open">🌐 Открыть сайт →</a>
-            <button class="btn-copy" onclick="copyLink('${item.i}')" title="Скопировать ссылку для отправки">📋 Копировать</button>
-          </div>
-        `;
-        frag.appendChild(card);
-      });
-
-      bizGrid.appendChild(frag);
-      renderedCount += batch.length;
-
-      if (renderedCount < filteredRecords.length) {
-        loadMoreBtn.style.display = 'inline-block';
-      } else {
-        loadMoreBtn.style.display = 'none';
+        resultsCount.textContent = `Найдено компаний: ${filteredRecords.length.toLocaleString('ru-RU')}`;
+        bizGrid.innerHTML = '';
+        renderedCount = 0;
+        renderNextBatch();
       }
-    }
 
-    loadMoreBtn.addEventListener('click', renderNextBatch);
+      function renderNextBatch() {
+        const batch = filteredRecords.slice(renderedCount, renderedCount + PAGE_SIZE);
+        const frag = document.createDocumentFragment();
+
+        batch.forEach(item => {
+          const nicheMeta = NICHE_NAMES[item.t] || { title: item.t, icon: "🏢" };
+          const card = document.createElement('div');
+          card.className = 'biz-card';
+
+          const siteUrl = `site/?id=${encodeURIComponent(item.i)}`;
+
+          card.innerHTML = `
+            <div>
+              <div class="card-top">
+                <span class="card-niche">${nicheMeta.icon} ${nicheMeta.title}</span>
+                <span class="card-city" title="${item.c}">${item.c}</span>
+              </div>
+              <h3 class="card-name">${escapeHtml(item.n)}</h3>
+              <div class="card-addr">📍 ${escapeHtml(item.a || item.c)}</div>
+              <div class="card-meta">
+                <span class="meta-star">⭐ ${item.r || '5.0'}</span>
+                <span style="color:#64748b;">•</span>
+                <span style="font-size:12px; color:#94a3b8;">${item.v || 12} отзывов</span>
+                <span style="color:#64748b;">•</span>
+                <span class="meta-phone"><a href="tel:${item.p}">📞 ${item.p}</a></span>
+              </div>
+            </div>
+            <div class="card-actions">
+              <a href="${siteUrl}" target="_blank" class="btn-open">🌐 Открыть сайт →</a>
+              <button class="btn-copy" onclick="copyLink('${item.i}')" title="Скопировать ссылку для отправки">📋 Копировать</button>
+            </div>
+          `;
+          frag.appendChild(card);
+        });
+
+        bizGrid.appendChild(frag);
+        renderedCount += batch.length;
+
+        if (renderedCount < filteredRecords.length) {
+          loadMoreBtn.style.display = 'inline-block';
+        } else {
+          loadMoreBtn.style.display = 'none';
+        }
+      }
+
+      loadMoreBtn.addEventListener('click', renderNextBatch);
+    }
 
     function escapeHtml(str) {
       if (!str) return '';
@@ -632,6 +698,9 @@
         .replace(/"/g, '&quot;')
         .replace(/'/g, '&#39;');
     }
+
+    // Auto-check on load
+    checkAuth();
   </script>
 </body>
 </html>
