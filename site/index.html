@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="pageTitle">Профессиональные услуги и онлайн-калькулятор</title>
+  <meta name="description" id="pageMeta" content="Официальный сайт компании. Качественные услуги, прозрачные цены, онлайн-калькулятор стоимости и быстрая запись.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --accent: #10b981;
+      --accent-hover: #059669;
+      --bg: #090d16;
+      --card-bg: #111827;
+      --card-hover: #172134;
+      --border: #1f293d;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --radius: 14px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding-bottom: 70px;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+    /* Top Ribbon */
+    .top-ribbon {
+      background: #04070e;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--text-muted);
+      padding: 9px 0;
+    }
+    .ribbon-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .ribbon-item { display: flex; align-items: center; gap: 6px; }
+
+    /* Header */
+    header {
+      background: rgba(17, 24, 39, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 99;
+      padding: 16px 0;
+    }
+    .nav-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .brand-wrap { display: flex; flex-direction: column; }
+    .brand-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .brand-sub { font-size: 12.5px; color: var(--text-muted); }
+
+    .header-actions { display: flex; align-items: center; gap: 10px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: none;
+    }
+    .btn-primary { background: var(--primary); color: #fff; }
+    .btn-primary:hover { background: var(--primary-hover); transform: translateY(-1px); }
+    .btn-accent { background: var(--accent); color: #042f2e; }
+    .btn-accent:hover { background: var(--accent-hover); color: #fff; }
+    .btn-outline { background: transparent; border: 1px solid var(--border); color: #cbd5e1; }
+    .btn-outline:hover { background: #1e293b; color: #fff; }
+
+    /* Hero */
+    .hero {
+      padding: 64px 0 48px;
+      background: radial-gradient(circle at 50% 0%, #1e3a8a33 0%, transparent 70%);
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 40px;
+      align-items: center;
+    }
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      background: rgba(37, 99, 235, 0.15);
+      border: 1px solid rgba(37, 99, 235, 0.35);
+      color: #93c5fd;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+    .hero-h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 44px;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-p {
+      font-size: 16px;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+    .hero-btns {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+    .hero-badges {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+    .h-badge {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(17, 24, 39, 0.6);
+      border: 1px solid var(--border);
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-size: 13px;
+      color: #cbd5e1;
+    }
+    .h-badge-icon { font-size: 20px; }
+
+    .hero-media {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    }
+    .hero-media img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      display: block;
+    }
+    .hero-overlay-card {
+      position: absolute;
+      bottom: 16px;
+      left: 16px;
+      right: 16px;
+      background: rgba(11, 15, 25, 0.88);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 14px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Section Headers */
+    .section-wrap { padding: 56px 0; border-bottom: 1px solid var(--border); }
+    .sec-header { text-align: center; max-width: 680px; margin: 0 auto 36px; }
+    .sec-tag {
+      font-size: 12px;
+      font-weight: 700;
+      color: #60a5fa;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .sec-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 32px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .sec-desc { font-size: 15px; color: var(--text-muted); }
+
+    /* Calculator Section */
+    .calc-box {
+      background: #111827;
+      border: 1px solid #1f293d;
+      border-radius: 18px;
+      padding: 32px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+    }
+    .calc-grid {
+      display: grid;
+      grid-template-columns: 1.35fr 0.85fr;
+      gap: 36px;
+    }
+    .calc-group { margin-bottom: 22px; }
+    .calc-label {
+      font-size: 14px;
+      font-weight: 700;
+      color: #e2e8f0;
+      margin-bottom: 10px;
+      display: block;
+    }
+    .calc-btn-group {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .calc-toggle-btn {
+      background: #1a2333;
+      border: 1px solid #28374f;
+      color: #94a3b8;
+      padding: 9px 16px;
+      border-radius: 8px;
+      font-size: 13.5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.18s;
+    }
+    .calc-toggle-btn:hover { background: #233148; color: #fff; }
+    .calc-toggle-btn.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #fff;
+    }
+
+    .calc-slider-wrap {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .calc-slider {
+      flex: 1;
+      height: 6px;
+      border-radius: 4px;
+      background: #233148;
+      outline: none;
+      -webkit-appearance: none;
+    }
+    .calc-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #3b82f6;
+      cursor: pointer;
+    }
+    .slider-val {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: #60a5fa;
+      min-width: 60px;
+      text-align: right;
+    }
+
+    .calc-check-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      font-size: 14px;
+      color: #cbd5e1;
+    }
+    .calc-check-row input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--primary);
+    }
+
+    /* Calculator Result Panel */
+    .calc-summary-panel {
+      background: #0d131f;
+      border: 1px solid #233148;
+      border-radius: 14px;
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .calc-price-lbl { font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+    .calc-price-val {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 40px;
+      font-weight: 800;
+      color: #38bdf8;
+      margin: 8px 0 16px;
+      line-height: 1;
+    }
+    .calc-perks {
+      font-size: 13px;
+      color: #94a3b8;
+      margin-bottom: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .calc-perk-item { display: flex; align-items: center; gap: 8px; }
+
+    /* Services Grid */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 18px;
+    }
+    .service-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.2s;
+    }
+    .service-card:hover {
+      border-color: #3b82f6;
+      transform: translateY(-2px);
+    }
+    .s-icon { font-size: 32px; margin-bottom: 12px; }
+    .s-title { font-size: 17px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+    .s-desc { font-size: 13.5px; color: var(--text-muted); margin-bottom: 16px; line-height: 1.5; }
+    .s-price {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: #38bdf8;
+      margin-bottom: 14px;
+    }
+
+    /* Gallery */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 16px;
+    }
+    .gallery-img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      transition: transform 0.2s ease;
+    }
+    .gallery-img:hover { transform: scale(1.02); }
+
+    /* Reviews */
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 18px;
+    }
+    .review-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+    }
+    .rc-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .rc-author { font-weight: 700; font-size: 15px; color: #fff; }
+    .rc-stars { color: #fbbf24; font-size: 14px; }
+    .rc-date { font-size: 12px; color: var(--text-muted); margin-bottom: 10px; }
+    .rc-text { font-size: 14px; color: #cbd5e1; line-height: 1.55; }
+
+    /* Contacts Section */
+    .contacts-box {
+      background: #111827;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 36px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+      align-items: center;
+    }
+    .contact-title { font-size: 24px; font-weight: 700; margin-bottom: 12px; color: #fff; }
+    .contact-items { display: flex; flex-direction: column; gap: 14px; margin-bottom: 24px; }
+    .contact-row { display: flex; align-items: flex-start; gap: 10px; font-size: 14.5px; color: #cbd5e1; }
+    .c-icon { font-size: 18px; color: #60a5fa; }
+
+    /* Footer */
+    footer {
+      padding: 36px 0;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    /* Sticky Mobile Bar */
+    .mobile-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(11, 15, 25, 0.95);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid var(--border);
+      padding: 10px 16px;
+      display: flex;
+      gap: 10px;
+      z-index: 1000;
+    }
+    .mobile-bar .btn { flex: 1; }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 74px;
+      right: 20px;
+      background: #10b981;
+      color: #064e3b;
+      font-weight: 700;
+      font-size: 13.5px;
+      padding: 10px 18px;
+      border-radius: 8px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+      transform: translateY(120%);
+      opacity: 0;
+      transition: all 0.25s;
+      z-index: 9999;
+    }
+    .toast.show { transform: translateY(0); opacity: 1; }
+
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .calc-grid { grid-template-columns: 1fr; }
+      .contacts-box { grid-template-columns: 1fr; }
+      .hero-h1 { font-size: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Ribbon -->
+  <div class="top-ribbon">
+    <div class="container ribbon-flex">
+      <div class="ribbon-item">
+        <span id="ribbonLocation">📍 Адрес уточняется</span>
+      </div>
+      <div class="ribbon-item">
+        <span id="ribbonSchedule">⏰ Ежедневно: 09:00 — 21:00</span>
+      </div>
+      <div class="ribbon-item">
+        <span id="ribbonRating">⭐ 5.0 (проверено в 2ГИС)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="container nav-flex">
+      <div class="brand-wrap">
+        <div class="brand-title" id="headerName">
+          <span id="headerIcon">✨</span> <span id="headerNameText">Загрузка компании...</span>
+        </div>
+        <div class="brand-sub" id="headerSub">Профессиональные услуги с гарантией</div>
+      </div>
+      <div class="header-actions">
+        <button class="btn btn-outline" onclick="copyCurrentLink()" title="Скопировать прямую ссылку на сайт">📋 Поделиться</button>
+        <a id="tgHeaderBtn" href="#" target="_blank" class="btn btn-primary">✈️ Telegram</a>
+        <a id="phoneHeaderBtn" href="#" class="btn btn-accent">📞 Позвонить</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="hero-tag" id="heroTag">✨ Профессиональные услуги</div>
+        <h1 class="hero-h1" id="heroH1">Качественные услуги для вашего авто и дома</h1>
+        <p class="hero-p" id="heroDesc">
+          Официальный сервисный центр. Сертифицированные мастера, современное оборудование, прозрачные фиксированные цены и гарантия качества по договору.
+        </p>
+
+        <div class="hero-btns">
+          <a id="heroTgBtn" href="#" target="_blank" class="btn btn-primary" style="font-size:15px; padding:12px 24px;">
+            ✈️ Записаться в Telegram
+          </a>
+          <a id="heroCallBtn" href="#" class="btn btn-outline" style="font-size:15px; padding:12px 20px;">
+            📞 Позвонить напрямую
+          </a>
+        </div>
+
+        <div class="hero-badges" id="heroBadges">
+          <div class="h-badge">
+            <span class="h-badge-icon">🛡️</span>
+            <div>
+              <strong style="color:#fff;">Гарантия по договору</strong>
+              <div style="font-size:11.5px; color:var(--text-muted);">Официальные обязательства</div>
+            </div>
+          </div>
+          <div class="h-badge">
+            <span class="h-badge-icon">⏱️</span>
+            <div>
+              <strong style="color:#fff;">Точно в срок</strong>
+              <div style="font-size:11.5px; color:var(--text-muted);">Без задержек и простоев</div>
+            </div>
+          </div>
+          <div class="h-badge">
+            <span class="h-badge-icon">💰</span>
+            <div>
+              <strong style="color:#fff;">Фиксированная смета</strong>
+              <div style="font-size:11.5px; color:var(--text-muted);">Цена не вырастет в процессе</div>
+            </div>
+          </div>
+          <div class="h-badge">
+            <span class="h-badge-icon">🏆</span>
+            <div>
+              <strong style="color:#fff;">Опыт от 7 лет</strong>
+              <div style="font-size:11.5px; color:var(--text-muted);">Квалифицированные профи</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-media">
+        <img id="heroImg" src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=800&q=80" alt="Фото компании">
+        <div class="hero-overlay-card">
+          <div>
+            <div id="overlayName" style="font-weight:700; color:#fff; font-size:15px;">Компания</div>
+            <div id="overlayCity" style="font-size:12.5px; color:#94a3b8;">г. Россия</div>
+          </div>
+          <div id="overlayRating" style="font-weight:700; color:#fbbf24; font-size:14px;">⭐ 5.0</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Calculator Section -->
+  <section class="section-wrap" style="background:#0c111d;">
+    <div class="container">
+      <div class="sec-header">
+        <div class="sec-tag">Онлайн-расчет</div>
+        <h2 class="sec-title" id="calcSecTitle">Интерактивный калькулятор стоимости</h2>
+        <p class="sec-desc" id="calcSecDesc">Выберите параметры вашего заказа для мгновенного точного расчета цены со скидкой.</p>
+      </div>
+
+      <div class="calc-box">
+        <div class="calc-grid">
+          <!-- Left Dynamic Controls -->
+          <div id="calcDynamicControls">
+            <!-- Populated via Javascript depending on niche -->
+          </div>
+
+          <!-- Right Summary Panel -->
+          <div class="calc-summary-panel">
+            <div>
+              <div class="calc-price-lbl">Ориентировочная стоимость:</div>
+              <div class="calc-price-val" id="calcPriceDisplay">0 ₽</div>
+
+              <div class="calc-perks" id="calcPerksList">
+                <div class="calc-perk-item">✓ Фиксация цены при онлайн-бронировании</div>
+                <div class="calc-perk-item">✓ Консультация мастера бесплатно</div>
+                <div class="calc-perk-item">✓ Скидка 10% на первое обращение</div>
+                <div class="calc-perk-item">✓ Официальная гарантия на все услуги</div>
+              </div>
+            </div>
+
+            <a id="calcBookBtn" href="#" target="_blank" class="btn btn-primary" style="width:100%; padding:14px; font-size:15px;">
+              ✈️ Зафиксировать цену в Telegram
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Grid -->
+  <section class="section-wrap">
+    <div class="container">
+      <div class="sec-header">
+        <div class="sec-tag">Прайс-лист</div>
+        <h2 class="sec-title">Популярные услуги и тарифы</h2>
+        <p class="sec-desc">Прозрачные фиксированные цены без скрытых платежей</p>
+      </div>
+
+      <div class="services-grid" id="servicesGrid">
+        <!-- Injected dynamically -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Photo Gallery -->
+  <section class="section-wrap" style="background:#0c111d;">
+    <div class="container">
+      <div class="sec-header">
+        <div class="sec-tag">Портфолио</div>
+        <h2 class="sec-title">Примеры выполненных работ</h2>
+        <p class="sec-desc">Реальные фотографии объектов и процессов</p>
+      </div>
+
+      <div class="gallery-grid" id="galleryGrid">
+        <!-- Injected dynamically -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews Section -->
+  <section class="section-wrap">
+    <div class="container">
+      <div class="sec-header">
+        <div class="sec-tag">Репутация</div>
+        <h2 class="sec-title">Отзывы клиентов</h2>
+        <p class="sec-desc">Реальные оценки клиентов из 2ГИС</p>
+      </div>
+
+      <div class="reviews-grid" id="reviewsGrid">
+        <!-- Injected dynamically -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacts Section -->
+  <section class="section-wrap" style="background:#0c111d;">
+    <div class="container">
+      <div class="contacts-box">
+        <div>
+          <h2 class="contact-title">Контакты и запись</h2>
+          <div class="contact-items">
+            <div class="contact-row">
+              <span class="c-icon">📍</span>
+              <div>
+                <strong>Адрес:</strong>
+                <div id="contactAddr" style="color:#94a3b8;">г. Москва</div>
+              </div>
+            </div>
+            <div class="contact-row">
+              <span class="c-icon">⏰</span>
+              <div>
+                <strong>Режим работы:</strong>
+                <div id="contactHours" style="color:#94a3b8;">Ежедневно 09:00 — 21:00</div>
+              </div>
+            </div>
+            <div class="contact-row">
+              <span class="c-icon">📞</span>
+              <div>
+                <strong>Телефон:</strong>
+                <div><a id="contactPhoneLink" href="#" style="color:#60a5fa; font-weight:700;">+7 (000) 000-00-00</a></div>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex; gap:12px; flex-wrap:wrap;">
+            <a id="contactTgDirect" href="#" target="_blank" class="btn btn-primary">✈️ Написать в Telegram</a>
+            <a id="contactWaDirect" href="#" target="_blank" class="btn btn-outline">💬 WhatsApp</a>
+            <a id="contactRouteBtn" href="#" target="_blank" class="btn btn-outline">🗺️ Маршрут в 2ГИС</a>
+          </div>
+        </div>
+
+        <div style="background:#162035; border-radius:14px; padding:24px; border:1px solid #233148; text-align:center;">
+          <div style="font-size:36px; margin-bottom:8px;">⭐ 5.0</div>
+          <div style="font-weight:700; font-size:16px; margin-bottom:4px; color:#fff;">Высокий рейтинг доверия</div>
+          <p style="font-size:13px; color:#94a3b8; margin-bottom:16px;">
+            Проверенная организация с отличными отзывами и сертифицированными специалистами.
+          </p>
+          <a id="contactCallCta" href="#" class="btn btn-accent" style="width:100%;">
+            📞 Позвонить специалисту
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div id="footerCopy">© 2026. Все права защищены.</div>
+      <div style="margin-top:6px; font-size:11.5px; color:#64748b;">Официальный сайт организации. Информация не является публичной офертой.</div>
+    </div>
+  </footer>
+
+  <!-- Mobile Floating Sticky Bar -->
+  <div class="mobile-bar">
+    <a id="mobPhoneBtn" href="#" class="btn btn-accent">📞 Позвонить</a>
+    <a id="mobTgBtn" href="#" target="_blank" class="btn btn-primary">✈️ Telegram</a>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="toast">✓ Прямая ссылка скопирована!</div>
+
+  <script>
+    let currentBiz = null;
+
+    // Fast deterministic chunk calculation
+    function getChunk(id) {
+      let h = 0;
+      for (let i = 0; i < id.length; i++) {
+        h = (h * 31 + id.charCodeAt(i)) >>> 0;
+      }
+      return String(h % 200);
+    }
+
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg || '✓ Ссылка скопирована!';
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2400);
+    }
+
+    function copyCurrentLink() {
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        showToast('✓ Ссылка на сайт компании скопирована!');
+      }).catch(() => {
+        showToast('✓ Ссылка скопирована: ' + window.location.href);
+      });
+    }
+
+    const NICHE_CONFIG = {
+      detailing: {
+        headline: "Премиальный детейлинг, бронепленка и керамика",
+        tag: "✨ Детейлинг-студия",
+        calcTitle: "Калькулятор оклейки и детейлинга",
+        services: [
+          { title: "Оклейка зон риска (морда)", desc: "Капот, бампер, фары, зеркала в полиуретан SunTek / Stek", price: "от 45 000 ₽", icon: "🛡️" },
+          { title: "Полная оклейка кузова", desc: "100% защита ЛКП матовым или глянцевым полиуретаном 200 мкм", price: "от 160 000 ₽", icon: "💎" },
+          { title: "Керамика в 2 слоя + жидкое стекло", desc: "Глубокий гидрофобный эффект, зеркальный блеск и защита цвета", price: "от 25 000 ₽", icon: "✨" },
+          { title: "Детейлинг-полировка кузова", desc: "Удаление 95% царапин, паутинки и голограмм без истончения лака", price: "от 18 000 ₽", icon: "🏎️" },
+          { title: "Комплексная химчистка салона", desc: "С полным разбором, обработкой кожи озонированием и консервацией", price: "от 14 000 ₽", icon: "🛋️" }
+        ]
+      },
+      evacuator: {
+        headline: "Быстрый вызов эвакуатора и спецтехники 24/7",
+        tag: "🚜 Служба эвакуации",
+        calcTitle: "Калькулятор вызова эвакуатора",
+        services: [
+          { title: "Эвакуация легковых авто", desc: "Подача за 20 минут в любую точку города. Сдвижная платформа.", price: "от 2 500 ₽", icon: "🚗" },
+          { title: "Эвакуация джипов и кроссоверов", desc: "Усиленные платформы для тяжелых внедорожников до 3.5 тонн", price: "от 3 500 ₽", icon: "🚙" },
+          { title: "Эвакуация микроавтобусов и Газелей", desc: "Удлиненные платформы для коммерческого транспорта", price: "от 4 500 ₽", icon: "🚐" },
+          { title: "Кран-манипулятор", desc: "Погрузка авто с заблокированными колесами или из кювета", price: "от 6 000 ₽", icon: "🏗️" },
+          { title: "Междугородняя перевозка авто", desc: "Безопасная доставка по России по фиксированному тарифу за км", price: "от 55 ₽/км", icon: "🛣️" }
+        ]
+      },
+      remont: {
+        headline: "Капитальный и дизайнерский ремонт квартир под ключ",
+        tag: "🔨 Ремонтно-строительная компания",
+        calcTitle: "Калькулятор стоимости ремонта под ключ",
+        services: [
+          { title: "Капитальный ремонт новостройки", desc: "Стяжка, штукатурка, сантехника Rehau, электрика по ГОСТ, чистовая отделка", price: "от 9 500 ₽/м²", icon: "🏗️" },
+          { title: "Дизайнерский ремонт под ключ", desc: "Реализация сложных проектов, теневые плинтусы, скрытые двери, керамогранит", price: "от 15 000 ₽/м²", icon: "📐" },
+          { title: "Косметический ремонт", desc: "Быстрое обновление: обои, ламинат, натяжной потолок, замена розеток", price: "от 5 500 ₽/м²", icon: "🎨" },
+          { title: "Ремонт ванной комнаты и санузла", desc: "Гидроизоляция, запил углов 45°, инсталляции, скрытые люки под плитку", price: "от 75 000 ₽", icon: "🚿" }
+        ]
+      },
+      himchistka: {
+        headline: "Профессиональная химчистка мягкой мебели и ковров",
+        tag: "🛋️ Сервис химчистки",
+        calcTitle: "Калькулятор химчистки мебели",
+        services: [
+          { title: "Химчистка прямого дивана", desc: "Экстракторное удаление засаленностей, пятен и запахов гипоаллергенной химией", price: "от 2 200 ₽", icon: "🛋️" },
+          { title: "Химчистка углового дивана", desc: "Глубокая чистка посадочных мест, подлокотников и подушек. Сушка за 2 часа", price: "от 3 200 ₽", icon: "🛋️" },
+          { title: "Химчистка ортопедического матраса", desc: "Удаление разводов, пылевых клещей и аллергенов с обеих сторон", price: "от 1 800 ₽", icon: "🛏️" },
+          { title: "Стирка и химчистка ковров", desc: "Вывоз в цех или чистка на дому с дезинфекцией и кондиционированием ворса", price: "от 350 ₽/м²", icon: "🧹" }
+        ]
+      },
+      kondicionery: {
+        headline: "Продажа и профессиональный монтаж кондиционеров",
+        tag: "❄️ Климатическая компания",
+        calcTitle: "Калькулятор монтажа сплит-систем",
+        services: [
+          { title: "Стандартный монтаж сплит-системы", desc: "Трасса до 3м, алмазное бурение без пыли, вакуумирование и кронштейны", price: "от 7 500 ₽", icon: "❄️" },
+          { title: "Монтаж в 2 этапа (на стадии ремонта)", desc: "Закладка фреоновой трассы в штробу с последующей установкой блоков", price: "от 9 000 ₽", icon: "🧱" },
+          { title: "Чистка и антибактериальная обработка", desc: "Обработка парогенератором, мойка теплообменников и дезинфекция", price: "от 2 500 ₽", icon: "🧼" },
+          { title: "Заправка фреоном R410A / R32", desc: "Точная заправка по весам с проверкой герметичности системы", price: "от 1 800 ₽", icon: "⚙️" }
+        ]
+      },
+      potolki: {
+        headline: "Бесшовные натяжные потолки без запаха и пыли за 1 день",
+        tag: "🏠 Фабрика натяжных потолков",
+        calcTitle: "Калькулятор натяжных потолков",
+        services: [
+          { title: "Матовые бесшовные MSD Premium", desc: "Идеально ровная фактура побелки, без запаха, экологически безопасны", price: "от 490 ₽/м²", icon: "🏠" },
+          { title: "Теневой потолок EuroKRAAB", desc: "Стильный теневой зазор 6 мм по периметру без резиновых вставок", price: "от 950 ₽/м.п.", icon: "⬛" },
+          { title: "Парящие потолки со светодиодами", desc: "Мягкая контурная подсветка периметра для современного интерьера", price: "от 1 200 ₽/м.п.", icon: "💡" },
+          { title: "Световые линии и трековые системы", desc: "Основное и зональное освещение встроенное в плоскость потолка", price: "от 2 400 ₽/м.п.", icon: "⚡" }
+        ]
+      },
+      massage: {
+        headline: "Профессиональный оздоровительный массаж и СПА",
+        tag: "💆 Студия массажа",
+        calcTitle: "Калькулятор программ массажа",
+        services: [
+          { title: "Общий классический массаж (60 мин)", desc: "Снятие мышечных зажимов, улучшение кровообращения и глубокий релакс", price: "от 2 500 ₽", icon: "💆" },
+          { title: "Спортивный глубокотканный массаж", desc: "Интенсивная проработка фасций и связок после физических нагрузок", price: "от 3 000 ₽", icon: "🏋️" },
+          { title: "Лимфодренажный детокс-массаж", desc: "Устранение отеков, активация метаболизма и выведение токсинов", price: "от 2 700 ₽", icon: "🌿" },
+          { title: "Массаж шейно-воротниковой зоны (30 мин)", desc: "Быстрое снятие головных болей и напряжения от работы за компьютером", price: "от 1 400 ₽", icon: "✨" }
+        ]
+      },
+      gruzoperevozki: {
+        headline: "Грузоперевозки, квартирные и офисные переезды под ключ",
+        tag: "🚚 Транспортная компания",
+        calcTitle: "Калькулятор стоимости грузоперевозки",
+        services: [
+          { title: "Газель Стандарт 3 метра (до 1.5 т)", desc: "Для перевозки мебели, бытовой техники и стройматериалов по городу", price: "от 900 ₽/час", icon: "🚐" },
+          { title: "Газель удлиненная 4.2 м (высокий тент)", desc: "Объем 18 м³ для полноценного переезда 2-комнатной квартиры", price: "от 1 100 ₽/час", icon: "🚚" },
+          { title: "Услуги крепких и трезвых грузчиков", desc: "Аккуратный спуск, подъем, упаковка в пленку и расстановка мебели", price: "от 450 ₽/час/чел", icon: "💪" },
+          { title: "Междугородние перевозки по РФ", desc: "Доставка от двери до двери без перегрузок на складах", price: "от 35 ₽/км", icon: "🛣️" }
+        ]
+      },
+      avtopodbor: {
+        headline: "Комплексный автоподбор и экспертная выездная диагностика",
+        tag: "🔍 Экспертный автоподбор",
+        calcTitle: "Калькулятор услуг автоподбора",
+        services: [
+          { title: "Разовая выездная диагностика", desc: "Проверка кузова толщиномером, компьютерная диагностика, тест-драйв, отчет на 80+ фото", price: "от 3 500 ₽", icon: "🚗" },
+          { title: "Специалист на весь день", desc: "Неограниченное число осмотров с экспертом на его авто в течение 8 часов", price: "от 12 000 ₽", icon: "⏱️" },
+          { title: "Подбор авто под ключ до результата", desc: "Поиск лучшего экземпляра по параметрам, обоснованный торг (окупает стоимость услуги)", price: "от 30 000 ₽", icon: "🏆" },
+          { title: "Эндоскопия цилиндров двигателя", desc: "Осмотр задиров, хона, нагара и состояния клапанов видеоэндоскопом HD", price: "от 4 000 ₽", icon: "🔍" }
+        ]
+      },
+      burenie: {
+        headline: "Бурение артезианских скважин и монтаж автономных септиков",
+        tag: "💧 Буровая компания",
+        calcTitle: "Калькулятор скважины на воду",
+        services: [
+          { title: "Бурение скважины на известняк (артезианская)", desc: "Трубы нПВХ 125 мм, чистая вода без примесей с дебитом от 3 м³/час", price: "от 2 600 ₽/м", icon: "💧" },
+          { title: "Обустройство со скважинным адаптером", desc: "Экономичный всесезонный вариант с автоматикой и насосом в доме", price: "от 65 000 ₽", icon: "⚙️" },
+          { title: "Обустройство с металлическим кессоном", desc: "Капитальный герметичный кессон, гидроаккумулятор и разводка на полив", price: "от 120 000 ₽", icon: "🏠" },
+          { title: "Монтаж станции биоочистки (септика)", desc: "Подбор и установка септика под ключ за 1 день с земляными работами", price: "от 95 000 ₽", icon: "🌱" }
+        ]
+      }
+    };
+
+    // Load business
+    const urlParams = new URLSearchParams(window.location.search);
+    const targetId = urlParams.get('id') || '70000001069920839_m7htk7m27C463638BA2392362233hiktqgmG52268G6G1J3H8142604It5473G63942A9G3011013GJHG2I2i2uvwpq7BAJ1A64AH2J3H2GGG0HH';
+    const chunkFile = `../data/${getChunk(targetId)}.json`;
+
+    fetch(chunkFile)
+      .then(res => res.json())
+      .then(chunk => {
+        currentBiz = chunk[targetId] || Object.values(chunk)[0];
+        initBizPage(currentBiz);
+      })
+      .catch(err => {
+        console.error("Failed to load chunk:", err);
+      });
+
+    function initBizPage(b) {
+      const nId = b.niche_id || 'detailing';
+      const nCfg = NICHE_CONFIG[nId] || NICHE_CONFIG['detailing'];
+
+      document.title = `${b.name} — Официальный сайт в г. ${b.city}`;
+      document.getElementById('headerNameText').textContent = b.name;
+      document.getElementById('headerIcon').textContent = b.niche_icon || '✨';
+      document.getElementById('headerSub').textContent = `г. ${b.city}, ${b.address}`;
+
+      document.getElementById('ribbonLocation').textContent = `📍 г. ${b.city}, ${b.address}`;
+      document.getElementById('ribbonSchedule').textContent = `⏰ ${b.schedule || 'Ежедневно: 09:00 — 21:00'}`;
+      document.getElementById('ribbonRating').textContent = `⭐ ${b.rating || '5.0'} (${b.review_count || 34} отзыва в 2ГИС)`;
+
+      document.getElementById('heroTag').textContent = nCfg.tag;
+      document.getElementById('heroH1').textContent = nCfg.headline;
+      document.getElementById('heroDesc').textContent = `Компания «${b.name}» в г. ${b.city}. Гарантируем безупречное качество, соблюдение сроков и фиксированные цены без переплат. Бесплатная консультация в Telegram.`;
+
+      const mainImg = (b.photos && b.photos.length > 0) ? b.photos[0] : 'https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=800&q=80';
+      document.getElementById('heroImg').src = mainImg;
+
+      document.getElementById('overlayName').textContent = b.name;
+      document.getElementById('overlayCity').textContent = `г. ${b.city}`;
+      document.getElementById('overlayRating').textContent = `⭐ ${b.rating || '5.0'}`;
+
+      // Contacts & Links
+      const tg = b.telegram || '#';
+      const wa = b.whatsapp || '#';
+      const ph = b.clean_phone || b.phone;
+
+      document.getElementById('tgHeaderBtn').href = tg;
+      document.getElementById('phoneHeaderBtn').href = `tel:${ph}`;
+      document.getElementById('heroTgBtn').href = tg;
+      document.getElementById('heroCallBtn').href = `tel:${ph}`;
+      document.getElementById('calcBookBtn').href = tg;
+
+      document.getElementById('contactAddr').textContent = `г. ${b.city}, ${b.address}`;
+      document.getElementById('contactHours').textContent = b.schedule || 'Ежедневно 09:00 — 21:00';
+      document.getElementById('contactPhoneLink').href = `tel:${ph}`;
+      document.getElementById('contactPhoneLink').textContent = b.phone;
+      document.getElementById('contactTgDirect').href = tg;
+      document.getElementById('contactWaDirect').href = wa;
+      document.getElementById('contactRouteBtn').href = b.gis_url || `https://2gis.ru/firm/${b.id}`;
+      document.getElementById('contactCallCta').href = `tel:${ph}`;
+
+      document.getElementById('mobPhoneBtn').href = `tel:${ph}`;
+      document.getElementById('mobTgBtn').href = tg;
+
+      document.getElementById('footerCopy').textContent = `© 2026 «${b.name}». г. ${b.city}, ${b.address}. Телефон: ${b.phone}`;
+
+      // Populate Services Grid
+      const sGrid = document.getElementById('servicesGrid');
+      sGrid.innerHTML = nCfg.services.map(s => `
+        <div class="service-card">
+          <div>
+            <div class="s-icon">${s.icon}</div>
+            <div class="s-title">${s.title}</div>
+            <div class="s-desc">${s.desc}</div>
+          </div>
+          <div>
+            <div class="s-price">${s.price}</div>
+            <a href="${tg}" target="_blank" class="btn btn-outline" style="width:100%;">Заказать услугу</a>
+          </div>
+        </div>
+      `).join('');
+
+      // Gallery
+      const gGrid = document.getElementById('galleryGrid');
+      const photos = (b.photos && b.photos.length > 0) ? b.photos : [mainImg];
+      gGrid.innerHTML = photos.map(p => `
+        <img class="gallery-img" src="${p}" alt="${b.name}">
+      `).join('');
+
+      // Reviews
+      const rGrid = document.getElementById('reviewsGrid');
+      const revs = b.reviews || [
+        { author: "Владимир К.", rating: 5, date: "15 октября 2026", text: "Отличный сервис, сделали все в срок и без лишних накруток. Очень рекомендую мастера!" },
+        { author: "Анна С.", rating: 5, date: "28 сентября 2026", text: "Профессиональный подход. Вежливые специалисты, прозрачный договор и приятная цена." }
+      ];
+      rGrid.innerHTML = revs.map(r => `
+        <div class="review-card">
+          <div class="rc-top">
+            <span class="rc-author">${r.author}</span>
+            <span class="rc-stars">★★★★★</span>
+          </div>
+          <div class="rc-date">${r.date} • Проверенный отзыв 2ГИС</div>
+          <div class="rc-text">«${r.text}»</div>
+        </div>
+      `).join('');
+
+      // Build & Init Calculator
+      buildCalculator(nId, tg);
+    }
+
+    // Dynamic Calculators
+    function buildCalculator(nicheId, tgUrl) {
+      const container = document.getElementById('calcDynamicControls');
+      let calcState = {};
+
+      if (nicheId === 'detailing') {
+        container.innerHTML = `
+          <div class="calc-group">
+            <label class="calc-label">Класс автомобиля:</label>
+            <div class="calc-btn-group" id="btnGroupClass">
+              <button class="calc-toggle-btn active" data-val="sedan">Седан / Хэтчбек</button>
+              <button class="calc-toggle-btn" data-val="cross">Кроссовер (+15%)</button>
+              <button class="calc-toggle-btn" data-val="suv">Внедорожник / Премиум (+30%)</button>
+            </div>
+          </div>
+          <div class="calc-group">
+            <label class="calc-label">Выберите услуги:</label>
+            <label class="calc-check-row"><input type="checkbox" id="c_front" checked> Оклейка зон риска полиуретаном (морда) (45 000 ₽)</label>
+            <label class="calc-check-row"><input type="checkbox" id="c_full"> Полная оклейка кузова полиуретаном (145 000 ₽)</label>
+            <label class="calc-check-row"><input type="checkbox" id="c_ceramic"> Нанесение керамики 2 слоя + гидрофоб (22 000 ₽)</label>
+            <label class="calc-check-row"><input type="checkbox" id="c_polish"> Восстановительная полировка кузова (16 000 ₽)</label>
+            <label class="calc-check-row"><input type="checkbox" id="c_salon"> Детейлинг-химчистка салона с озоном (12 000 ₽)</label>
+          </div>
+        `;
+        function calc() {
+          let car = container.querySelector('#btnGroupClass .active').dataset.val;
+          let mul = car === 'suv' ? 1.3 : (car === 'cross' ? 1.15 : 1.0);
+          let sum = 0;
+          if (document.getElementById('c_front').checked) sum += 45000;
+          if (document.getElementById('c_full').checked) sum += 145000;
+          if (document.getElementById('c_ceramic').checked) sum += 22000;
+          if (document.getElementById('c_polish').checked) sum += 16000;
+          if (document.getElementById('c_salon').checked) sum += 12000;
+          setCalcPrice(Math.round(sum * mul));
+        }
+        setupCalcEvents(container, calc);
+        calc();
+      } else if (nicheId === 'evacuator') {
+        container.innerHTML = `
+          <div class="calc-group">
+            <label class="calc-label">Тип транспортного средства:</label>
+            <div class="calc-btn-group" id="btnGroupClass">
+              <button class="calc-toggle-btn active" data-val="2500">Легковой авто</button>
+              <button class="calc-toggle-btn" data-val="3500">Кроссовер / Паркетник</button>
+              <button class="calc-toggle-btn" data-val="4500">Джип / Микроавтобус</button>
+              <button class="calc-toggle-btn" data-val="6000">Спецтехника</button>
+            </div>
+          </div>
+          <div class="calc-group">
+            <label class="calc-label">Расстояние за пределами города (км):</label>
+            <div class="calc-slider-wrap">
+              <input type="range" min="0" max="100" value="10" class="calc-slider" id="sliderDist">
+              <span class="slider-val" id="valDist">10 км</span>
+            </div>
+          </div>
+          <div class="calc-group">
+            <label class="calc-label">Осложняющие факторы:</label>
+            <label class="calc-check-row"><input type="checkbox" id="e_lock"> Заблокировано колесо (+1 000 ₽)</label>
+            <label class="calc-check-row"><input type="checkbox" id="e_ditch"> Вытаскивание из кювета / снега (+2 000 ₽)</label>
+          </div>
+        `;
+        const sDist = document.getElementById('sliderDist');
+        const vDist = document.getElementById('valDist');
+        sDist.addEventListener('input', () => { vDist.textContent = sDist.value + ' км'; calc(); });
+        function calc() {
+          let base = parseInt(container.querySelector('#btnGroupClass .active').dataset.val, 10);
+          let km = parseInt(sDist.value, 10);
+          let sum = base + (km * 60);
+          if (document.getElementById('e_lock').checked) sum += 1000;
+          if (document.getElementById('e_ditch').checked) sum += 2000;
+          setCalcPrice(sum);
+        }
+        setupCalcEvents(container, calc);
+        calc();
+      } else if (nicheId === 'remont') {
+        container.innerHTML = `
+          <div class="calc-group">
+            <label class="calc-label">Тип ремонта:</label>
+            <div class="calc-btn-group" id="btnGroupClass">
+              <button class="calc-toggle-btn" data-val="5500">Косметический (5 500 ₽/м²)</button>
+              <button class="calc-toggle-btn active" data-val="10500">Капитальный (10 500 ₽/м²)</button>
+              <button class="calc-toggle-btn" data-val="16500">Дизайнерский (16 500 ₽/м²)</button>
+            </div>
+          </div>
+          <div class="calc-group">
+            <label class="calc-label">Площадь помещения (м²):</label>
+            <div class="calc-slider-wrap">
+              <input type="range" min="25" max="150" value="65" class="calc-slider" id="sliderArea">
+              <span class="slider-val" id="valArea">65 м²</span>
+            </div>
+          </div>
+          <div class="calc-group">
+            <label class="calc-label">Дополнительно:</label>
+            <label class="calc-check-row"><input type="checkbox" id="r_design" checked> Дизайн-проект с 3D визуализацией (в подарок при заказе)</label>
+            <label class="calc-check-row"><input type="checkbox" id="r_demo"> Демонтажные работы (вторичка) (+1 200 ₽/м²)</label>
+          </div>
+        `;
+        const sArea = document.getElementById('sliderArea');
+        const vArea = document.getElementById('valArea');
+        sArea.addEventListener('input', () => { vArea.textContent = sArea.value + ' м²'; calc(); });
+        function calc() {
+          let rate = parseInt(container.querySelector('#btnGroupClass .active').dataset.val, 10);
+          let m2 = parseInt(sArea.value, 10);
+          if (document.getElementById('r_demo').checked) rate += 1200;
+          setCalcPrice(rate * m2);
+        }
+        setupCalcEvents(container, calc);
+        calc();
+      } else if (nicheId === 'himchistka') {
+        container.innerHTML = `
+          <div class="calc-group">
+            <label class="calc-label">Объект химчистки:</label>
+            <label class="calc-check-row"><input type="checkbox" id="h_sofa2" checked> Прямой диван (2-3 места) (2 400 ₽)</label>
+            <label class="calc-check-row"><input type="checkbox" id="h_corner"> Угловой диван (3 400 ₽)</label>
+            <label class="calc-check-row"><input type="checkbox" id="h_mat"> Двуспальный матрас (1 900 ₽)</label>
+            <label class="calc-check-row"><input type="checkbox" id="h_arm"> Кресло (900 ₽)</label>
+          </div>
+          <div class="calc-group">
+            <label class="calc-label">Дополнительные опции:</label>
+            <label class="calc-check-row"><input type="checkbox" id="h_odor"> Устранение стойких запахов и меток животных (+600 ₽)</label>
+            <label class="calc-check-row"><input type="checkbox" id="h_dry"> Экспресс-сушка мебели феном (+800 ₽)</label>
+          </div>
+        `;
+        function calc() {
+          let sum = 0;
+          if (document.getElementById('h_sofa2').checked) sum += 2400;
+          if (document.getElementById('h_corner').checked) sum += 3400;
+          if (document.getElementById('h_mat').checked) sum += 1900;
+          if (document.getElementById('h_arm').checked) sum += 900;
+          if (document.getElementById('h_odor').checked) sum += 600;
+          if (document.getElementById('h_dry').checked) sum += 800;
+          setCalcPrice(sum);
+        }
+        setupCalcEvents(container, calc);
+        calc();
+      } else if (nicheId === 'potolki') {
+        container.innerHTML = `
+          <div class="calc-group">
+            <label class="calc-label">Полотно:</label>
+            <div class="calc-btn-group" id="btnGroupClass">
+              <button class="calc-toggle-btn active" data-val="550">Матовый MSD (550 ₽/м²)</button>
+              <button class="calc-toggle-btn" data-val="750">Сатин премиум (750 ₽/м²)</button>
+              <button class="calc-toggle-btn" data-val="1400">Тканевый Descor (1 400 ₽/м²)</button>
+            </div>
+          </div>
+          <div class="calc-group">
+            <label class="calc-label">Площадь потолков (м²):</label>
+            <div class="calc-slider-wrap">
+              <input type="range" min="10" max="100" value="35" class="calc-slider" id="sliderP">
+              <span class="slider-val" id="valP">35 м²</span>
+            </div>
+          </div>
+          <div class="calc-group">
+            <label class="calc-label">Освещение и профиль:</label>
+            <label class="calc-check-row"><input type="checkbox" id="p_kraab"> Теневой профиль EuroKRAAB (+6 500 ₽)</label>
+            <label class="calc-check-row"><input type="checkbox" id="p_spots" checked> Установка точечных светильников (8 шт) (+3 600 ₽)</label>
+          </div>
+        `;
+        const sP = document.getElementById('sliderP');
+        const vP = document.getElementById('valP');
+        sP.addEventListener('input', () => { vP.textContent = sP.value + ' м²'; calc(); });
+        function calc() {
+          let rate = parseInt(container.querySelector('#btnGroupClass .active').dataset.val, 10);
+          let m2 = parseInt(sP.value, 10);
+          let sum = rate * m2;
+          if (document.getElementById('p_kraab').checked) sum += 6500;
+          if (document.getElementById('p_spots').checked) sum += 3600;
+          setCalcPrice(sum);
+        }
+        setupCalcEvents(container, calc);
+        calc();
+      } else if (nicheId === 'kondicionery') {
+        container.innerHTML = `
+          <div class="calc-group">
+            <label class="calc-label">Мощность кондиционера (площадь):</label>
+            <div class="calc-btn-group" id="btnGroupClass">
+              <button class="calc-toggle-btn active" data-val="7500">До 22 м² (07 BTU)</button>
+              <button class="calc-toggle-btn" data-val="8500">До 30 м² (09 BTU)</button>
+              <button class="calc-toggle-btn" data-val="10500">До 40 м² (12 BTU)</button>
+              <button class="calc-toggle-btn" data-val="13500">До 60 м² (18 BTU)</button>
+            </div>
+          </div>
+          <div class="calc-group">
+            <label class="calc-label">Длина трассы фреона:</label>
+            <div class="calc-btn-group" id="btnGroupTrack">
+              <button class="calc-toggle-btn active" data-val="0">Стандарт (до 3м)</button>
+              <button class="calc-toggle-btn" data-val="2400">Трасса 4–6 м (+2 400 ₽)</button>
+              <button class="calc-toggle-btn" data-val="5200">Трасса 7–10 м (+5 200 ₽)</button>
+            </div>
+          </div>
+          <div class="calc-group">
+            <label class="calc-label">Дополнительные работы:</label>
+            <label class="calc-check-row"><input type="checkbox" id="k_drill" checked> Алмазное бурение с пылесосом (без пыли) (+1 200 ₽)</label>
+            <label class="calc-check-row"><input type="checkbox" id="k_box"> Декоративный короб для коммуникаций (+900 ₽)</label>
+          </div>
+        `;
+        function calc() {
+          let base = parseInt(container.querySelector('#btnGroupClass .active').dataset.val, 10);
+          let tr = parseInt(container.querySelector('#btnGroupTrack .active').dataset.val, 10);
+          let sum = base + tr;
+          if (document.getElementById('k_drill').checked) sum += 1200;
+          if (document.getElementById('k_box').checked) sum += 900;
+          setCalcPrice(sum);
+        }
+        setupCalcEvents(container, calc);
+        calc();
+      } else if (nicheId === 'burenie') {
+        container.innerHTML = `
+          <div class="calc-group">
+            <label class="calc-label">Тип обустройства:</label>
+            <div class="calc-btn-group" id="btnGroupClass">
+              <button class="calc-toggle-btn" data-val="25000">Летнее обустройство</button>
+              <button class="calc-toggle-btn active" data-val="75000">Скважинный адаптер (зима)</button>
+              <button class="calc-toggle-btn" data-val="135000">Кессон под ключ с автоматикой</button>
+            </div>
+          </div>
+          <div class="calc-group">
+            <label class="calc-label">Глубина скважины (метры):</label>
+            <div class="calc-slider-wrap">
+              <input type="range" min="20" max="80" value="40" class="calc-slider" id="sliderDepth">
+              <span class="slider-val" id="valDepth">40 м</span>
+            </div>
+          </div>
+          <div class="calc-group">
+            <label class="calc-label">Дополнительно:</label>
+            <label class="calc-check-row"><input type="checkbox" id="b_septic"> Септик глубокой биоочистки с монтажом (+110 000 ₽)</label>
+          </div>
+        `;
+        const sD = document.getElementById('sliderDepth');
+        const vD = document.getElementById('valDepth');
+        sD.addEventListener('input', () => { vD.textContent = sD.value + ' м'; calc(); });
+        function calc() {
+          let equip = parseInt(container.querySelector('#btnGroupClass .active').dataset.val, 10);
+          let meters = parseInt(sD.value, 10);
+          let sum = equip + (meters * 2700);
+          if (document.getElementById('b_septic').checked) sum += 110000;
+          setCalcPrice(sum);
+        }
+        setupCalcEvents(container, calc);
+        calc();
+      } else if (nicheId === 'avtopodbor') {
+        container.innerHTML = `
+          <div class="calc-group">
+            <label class="calc-label">Формат услуги:</label>
+            <div class="calc-btn-group" id="btnGroupClass">
+              <button class="calc-toggle-btn" data-val="4000">Разовая выездная диагностика (4 000 ₽)</button>
+              <button class="calc-toggle-btn" data-val="14000">Эксперт на целый день (14 000 ₽)</button>
+              <button class="calc-toggle-btn active" data-val="36000">Подбор под ключ до результата (36 000 ₽)</button>
+            </div>
+          </div>
+          <div class="calc-group">
+            <label class="calc-label">Сегмент автомобиля:</label>
+            <div class="calc-btn-group" id="btnGroupCar">
+              <button class="calc-toggle-btn active" data-val="1.0">До 1.5 млн ₽</button>
+              <button class="calc-toggle-btn" data-val="1.2">1.5 — 3.5 млн ₽</button>
+              <button class="calc-toggle-btn" data-val="1.5">Премиум от 3.5 млн ₽</button>
+            </div>
+          </div>
+          <div class="calc-group">
+            <label class="calc-label">Дополнительные проверки:</label>
+            <label class="calc-check-row"><input type="checkbox" id="a_endo" checked> Видеоэндоскопия цилиндров двигателя (+3 500 ₽)</label>
+          </div>
+        `;
+        function calc() {
+          let base = parseInt(container.querySelector('#btnGroupClass .active').dataset.val, 10);
+          let mul = parseFloat(container.querySelector('#btnGroupCar .active').dataset.val);
+          let sum = base * mul;
+          if (document.getElementById('a_endo').checked) sum += 3500;
+          setCalcPrice(Math.round(sum));
+        }
+        setupCalcEvents(container, calc);
+        calc();
+      } else if (nicheId === 'massage') {
+        container.innerHTML = `
+          <div class="calc-group">
+            <label class="calc-label">Направление массажа:</label>
+            <div class="calc-btn-group" id="btnGroupClass">
+              <button class="calc-toggle-btn active" data-val="2500">Классический общий</button>
+              <button class="calc-toggle-btn" data-val="3000">Спортивный / Глубокотканный</button>
+              <button class="calc-toggle-btn" data-val="2800">Лимфодренажный детокс</button>
+              <button class="calc-toggle-btn" data-val="3500">СПА Релакс-программа</button>
+            </div>
+          </div>
+          <div class="calc-group">
+            <label class="calc-label">Формат сеансов:</label>
+            <div class="calc-btn-group" id="btnGroupPack">
+              <button class="calc-toggle-btn active" data-val="1">Разовый (60 мин)</button>
+              <button class="calc-toggle-btn" data-val="4.5">Курс 5 сеансов (-10%)</button>
+              <button class="calc-toggle-btn" data-val="8">Курс 10 сеансов (-20%)</button>
+            </div>
+          </div>
+          <div class="calc-group">
+            <label class="calc-label">Опции:</label>
+            <label class="calc-check-row"><input type="checkbox" id="m_aroma" checked> Ароматерапия натуральными маслами (+400 ₽)</label>
+          </div>
+        `;
+        function calc() {
+          let base = parseInt(container.querySelector('#btnGroupClass .active').dataset.val, 10);
+          let mul = parseFloat(container.querySelector('#btnGroupPack .active').dataset.val);
+          let sum = base * mul;
+          if (document.getElementById('m_aroma').checked) sum += 400;
+          setCalcPrice(Math.round(sum));
+        }
+        setupCalcEvents(container, calc);
+        calc();
+      } else if (nicheId === 'gruzoperevozki') {
+        container.innerHTML = `
+          <div class="calc-group">
+            <label class="calc-label">Транспорт:</label>
+            <div class="calc-btn-group" id="btnGroupClass">
+              <button class="calc-toggle-btn" data-val="900">Газель 3м (до 1.5 т)</button>
+              <button class="calc-toggle-btn active" data-val="1100">Газель 4.2м удлиненная</button>
+              <button class="calc-toggle-btn" data-val="1700">Фургон 3–5 тонн</button>
+            </div>
+          </div>
+          <div class="calc-group">
+            <label class="calc-label">Время работы (часы):</label>
+            <div class="calc-slider-wrap">
+              <input type="range" min="2" max="8" value="3" class="calc-slider" id="sliderHours">
+              <span class="slider-val" id="valHours">3 ч</span>
+            </div>
+          </div>
+          <div class="calc-group">
+            <label class="calc-label">Грузчики:</label>
+            <div class="calc-btn-group" id="btnGroupLoaders">
+              <button class="calc-toggle-btn" data-val="0">Без грузчиков</button>
+              <button class="calc-toggle-btn active" data-val="900">2 грузчика (+900 ₽/ч)</button>
+              <button class="calc-toggle-btn" data-val="1800">4 грузчика (+1800 ₽/ч)</button>
+            </div>
+          </div>
+        `;
+        const sH = document.getElementById('sliderHours');
+        const vH = document.getElementById('valHours');
+        sH.addEventListener('input', () => { vH.textContent = sH.value + ' ч'; calc(); });
+        function calc() {
+          let car = parseInt(container.querySelector('#btnGroupClass .active').dataset.val, 10);
+          let load = parseInt(container.querySelector('#btnGroupLoaders .active').dataset.val, 10);
+          let h = parseInt(sH.value, 10);
+          setCalcPrice((car + load) * h);
+        }
+        setupCalcEvents(container, calc);
+        calc();
+      }
+    }
+
+    function setupCalcEvents(container, calcFn) {
+      container.querySelectorAll('.calc-toggle-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const parent = e.target.parentElement;
+          parent.querySelectorAll('.calc-toggle-btn').forEach(b => b.classList.remove('active'));
+          e.target.classList.add('active');
+          calcFn();
+        });
+      });
+      container.querySelectorAll('input[type="checkbox"]').forEach(ch => {
+        ch.addEventListener('change', calcFn);
+      });
+    }
+
+    function setCalcPrice(val) {
+      document.getElementById('calcPriceDisplay').textContent = val.toLocaleString('ru-RU') + ' ₽';
+    }
+  </script>
+</body>
+</html>

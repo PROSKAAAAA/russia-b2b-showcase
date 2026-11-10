@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B2B Showcase Russia — 35 000+ компаний с персональными сайтами</title>
+  <meta name="description" content="Реестр 35,000+ проверенных компаний России в 10 высокомаржинальных нишах с индивидуальными готовыми сайтами и интерактивными калькуляторами.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --card-bg: #111827;
+      --card-border: #1f293d;
+      --card-hover: #162035;
+      --primary: #3b82f6;
+      --primary-hover: #2563eb;
+      --accent: #10b981;
+      --text: #f3f4f6;
+      --text-muted: #9ca3af;
+      --radius: 14px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding-bottom: 80px;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    .container {
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    header {
+      padding: 44px 0 32px;
+      border-bottom: 1px solid var(--card-border);
+      background: radial-gradient(circle at 50% 0%, #1e293b55 0%, transparent 75%);
+    }
+
+    .badge-top {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 14px;
+      border-radius: 9999px;
+      background: rgba(59, 130, 246, 0.12);
+      border: 1px solid rgba(59, 130, 246, 0.35);
+      color: #93c5fd;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 38px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .header-desc {
+      font-size: 16px;
+      color: var(--text-muted);
+      max-width: 780px;
+      margin-bottom: 24px;
+    }
+
+    /* Metrics Bar */
+    .metrics-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+      margin-top: 20px;
+    }
+    .metric-item {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 14px 18px;
+    }
+    .m-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: #60a5fa;
+    }
+    .m-lbl {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* Controls */
+    .controls-panel {
+      padding: 26px 0 16px;
+      position: sticky;
+      top: 0;
+      background: rgba(11, 15, 25, 0.94);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+      border-bottom: 1px solid rgba(31, 41, 61, 0.6);
+    }
+
+    .search-row {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .search-box {
+      flex: 1;
+      min-width: 280px;
+      position: relative;
+    }
+
+    .search-input {
+      width: 100%;
+      background: #111827;
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 14px 16px 14px 44px;
+      color: #fff;
+      font-size: 15px;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .search-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 16px;
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    .csv-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #1f293d;
+      border: 1px solid #374151;
+      color: #f3f4f6;
+      padding: 0 20px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: 0.2s;
+      white-space: nowrap;
+    }
+    .csv-btn:hover {
+      background: #374151;
+      border-color: #4b5563;
+    }
+
+    /* Niche Pills */
+    .niche-pills {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 6px;
+      scrollbar-width: thin;
+    }
+    .niche-pill {
+      background: #151e30;
+      border: 1px solid #23314a;
+      padding: 7px 14px;
+      border-radius: 9999px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #94a3b8;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .niche-pill:hover {
+      background: #1e293b;
+      color: #f8fafc;
+    }
+    .niche-pill.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(59, 130, 246, 0.35);
+    }
+    .pill-count {
+      font-size: 11px;
+      opacity: 0.75;
+      background: rgba(0,0,0,0.25);
+      padding: 1px 6px;
+      border-radius: 10px;
+    }
+
+    /* Status Bar */
+    .status-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 20px 0 16px;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    /* Grid */
+    .biz-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 18px;
+    }
+
+    .biz-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+    }
+    .biz-card:hover {
+      transform: translateY(-2px);
+      border-color: #3b82f6;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      gap: 8px;
+    }
+    .card-niche {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #60a5fa;
+      background: rgba(59, 130, 246, 0.12);
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+    .card-city {
+      font-size: 12px;
+      color: var(--text-muted);
+      background: #1f293d;
+      padding: 3px 8px;
+      border-radius: 6px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 140px;
+    }
+
+    .card-name {
+      font-size: 17px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.35;
+      margin-bottom: 8px;
+    }
+
+    .card-addr {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 5px;
+    }
+
+    .card-meta {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 13px;
+      margin-bottom: 16px;
+      padding: 8px 12px;
+      background: #0f1624;
+      border-radius: 8px;
+    }
+    .meta-star {
+      color: #fbbf24;
+      font-weight: 700;
+    }
+    .meta-phone {
+      color: #94a3b8;
+    }
+    .meta-phone a:hover {
+      color: #60a5fa;
+      text-decoration: underline;
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .btn-open {
+      flex: 1;
+      background: var(--primary);
+      color: #fff;
+      text-align: center;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 13.5px;
+      font-weight: 700;
+      transition: background 0.18s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .btn-open:hover {
+      background: var(--primary-hover);
+    }
+
+    .btn-copy {
+      background: #1f293d;
+      color: #e2e8f0;
+      border: 1px solid #334155;
+      padding: 10px 12px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.18s;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .btn-copy:hover {
+      background: #334155;
+      border-color: #475569;
+      color: #fff;
+    }
+
+    /* Load more */
+    .load-more-wrap {
+      text-align: center;
+      margin-top: 36px;
+    }
+    .btn-more {
+      background: #1e293b;
+      border: 1px solid #334155;
+      color: #fff;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 12px 32px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .btn-more:hover {
+      background: #334155;
+      border-color: #475569;
+    }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #10b981;
+      color: #064e3b;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 12px 22px;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+      transform: translateY(120%);
+      opacity: 0;
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 26px; }
+      .biz-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <div class="badge-top">⚡ B2B DIRECTORY &amp; SITE ENGINE 2026</div>
+      <h1>35 000+ компаний России с готовыми сайтами</h1>
+      <p class="header-desc">
+        Единый реестр проверенных сервисных компаний России без собственных сайтов. Для каждого бизнеса сгенерирован полноценный отдельный лендинг с интерактивным калькулятором, тарифами, отзывами и прямой связью.
+      </p>
+
+      <div class="metrics-bar">
+        <div class="metric-item">
+          <div class="m-num">35 047</div>
+          <div class="m-lbl">Компаний в базе</div>
+        </div>
+        <div class="metric-item">
+          <div class="m-num">10</div>
+          <div class="m-lbl">Маржинальных ниш</div>
+        </div>
+        <div class="metric-item">
+          <div class="m-num">307</div>
+          <div class="m-lbl">Городов РФ</div>
+        </div>
+        <div class="metric-item">
+          <div class="m-num">100%</div>
+          <div class="m-lbl">С онлайн-калькулятором</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="controls-panel">
+    <div class="container">
+      <div class="search-row">
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="searchInput" class="search-input" placeholder="Поиск по названию компании, городу, улице или телефону..." autocomplete="off">
+        </div>
+        <a href="russia_b2b_35000.csv" download class="csv-btn">
+          📥 Скачать базу (CSV 18.6 MB)
+        </a>
+      </div>
+
+      <div class="niche-pills" id="nichePills">
+        <button class="niche-pill active" data-niche="all">🌟 Все <span class="pill-count">35 047</span></button>
+        <button class="niche-pill" data-niche="detailing">✨ Детейлинг <span class="pill-count">7 978</span></button>
+        <button class="niche-pill" data-niche="evacuator">🚜 Эвакуаторы <span class="pill-count">6 612</span></button>
+        <button class="niche-pill" data-niche="remont">🔨 Ремонт квартир <span class="pill-count">3 897</span></button>
+        <button class="niche-pill" data-niche="himchistka">🛋️ Химчистка <span class="pill-count">3 528</span></button>
+        <button class="niche-pill" data-niche="kondicionery">❄️ Кондиционеры <span class="pill-count">2 925</span></button>
+        <button class="niche-pill" data-niche="potolki">🏠 Потолки <span class="pill-count">2 368</span></button>
+        <button class="niche-pill" data-niche="massage">💆 Массаж &amp; СПА <span class="pill-count">2 224</span></button>
+        <button class="niche-pill" data-niche="gruzoperevozki">🚚 Грузоперевозки <span class="pill-count">2 078</span></button>
+        <button class="niche-pill" data-niche="avtopodbor">🔍 Автоподбор <span class="pill-count">2 068</span></button>
+        <button class="niche-pill" data-niche="burenie">💧 Бурение скважин <span class="pill-count">1 369</span></button>
+      </div>
+    </div>
+  </div>
+
+  <main class="container">
+    <div class="status-bar">
+      <div id="resultsCount">Загрузка индекса...</div>
+      <div id="performanceBadge" style="font-size:12px; color:#64748b;">Мгновенный поиск</div>
+    </div>
+
+    <div class="biz-grid" id="bizGrid"></div>
+
+    <div class="load-more-wrap">
+      <button id="loadMoreBtn" class="btn-more" style="display:none;">Показать еще 48 компаний</button>
+    </div>
+  </main>
+
+  <div id="toast" class="toast">✓ Прямая ссылка скопирована в буфер обмена!</div>
+
+  <script>
+    let allRecords = [];
+    let filteredRecords = [];
+    let renderedCount = 0;
+    const PAGE_SIZE = 48;
+    let activeNiche = 'all';
+
+    const NICHE_NAMES = {
+      detailing: { title: "Детейлинг и пленка", icon: "✨" },
+      evacuator: { title: "Эвакуатор и спецтехника", icon: "🚜" },
+      remont: { title: "Ремонт квартир", icon: "🔨" },
+      himchistka: { title: "Химчистка и клининг", icon: "🛋️" },
+      kondicionery: { title: "Кондиционеры", icon: "❄️" },
+      potolki: { title: "Натяжные потолки", icon: "🏠" },
+      massage: { title: "Массаж и СПА", icon: "💆" },
+      gruzoperevozki: { title: "Грузоперевозки", icon: "🚚" },
+      avtopodbor: { title: "Автоподбор", icon: "🔍" },
+      burenie: { title: "Бурение скважин", icon: "💧" }
+    };
+
+    const searchInput = document.getElementById('searchInput');
+    const bizGrid = document.getElementById('bizGrid');
+    const loadMoreBtn = document.getElementById('loadMoreBtn');
+    const resultsCount = document.getElementById('resultsCount');
+    const toast = document.getElementById('toast');
+
+    function showToast(msg) {
+      toast.textContent = msg || '✓ Ссылка скопирована!';
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2400);
+    }
+
+    function copyLink(id) {
+      const url = `${window.location.origin}${window.location.pathname.replace(/\/index\.html$/, '')}/site/?id=${id}`;
+      navigator.clipboard.writeText(url).then(() => {
+        showToast('✓ Ссылка на сайт компании скопирована!');
+      }).catch(() => {
+        showToast('✓ Ссылка скопирована: ' + url);
+      });
+    }
+
+    // Load search index
+    fetch('search_index.json')
+      .then(res => res.json())
+      .then(data => {
+        allRecords = data;
+        applyFilters();
+      })
+      .catch(err => {
+        resultsCount.textContent = 'Ошибка загрузки базы данных';
+        console.error(err);
+      });
+
+    // Niche filter clicks
+    document.querySelectorAll('.niche-pill').forEach(pill => {
+      pill.addEventListener('click', () => {
+        document.querySelectorAll('.niche-pill').forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+        activeNiche = pill.dataset.niche;
+        applyFilters();
+      });
+    });
+
+    // Search query input
+    let searchDebounce;
+    searchInput.addEventListener('input', () => {
+      clearTimeout(searchDebounce);
+      searchDebounce = setTimeout(applyFilters, 150);
+    });
+
+    function applyFilters() {
+      const q = (searchInput.value || '').trim().toLowerCase();
+      filteredRecords = allRecords.filter(item => {
+        if (activeNiche !== 'all' && item.t !== activeNiche) return false;
+        if (!q) return true;
+        return (
+          item.n.toLowerCase().includes(q) ||
+          item.c.toLowerCase().includes(q) ||
+          (item.a && item.a.toLowerCase().includes(q)) ||
+          item.p.includes(q)
+        );
+      });
+
+      resultsCount.textContent = `Найдено компаний: ${filteredRecords.length.toLocaleString('ru-RU')}`;
+      bizGrid.innerHTML = '';
+      renderedCount = 0;
+      renderNextBatch();
+    }
+
+    function renderNextBatch() {
+      const batch = filteredRecords.slice(renderedCount, renderedCount + PAGE_SIZE);
+      const frag = document.createDocumentFragment();
+
+      batch.forEach(item => {
+        const nicheMeta = NICHE_NAMES[item.t] || { title: item.t, icon: "🏢" };
+        const card = document.createElement('div');
+        card.className = 'biz-card';
+
+        const siteUrl = `site/?id=${encodeURIComponent(item.i)}`;
+
+        card.innerHTML = `
+          <div>
+            <div class="card-top">
+              <span class="card-niche">${nicheMeta.icon} ${nicheMeta.title}</span>
+              <span class="card-city" title="${item.c}">${item.c}</span>
+            </div>
+            <h3 class="card-name">${escapeHtml(item.n)}</h3>
+            <div class="card-addr">📍 ${escapeHtml(item.a || item.c)}</div>
+            <div class="card-meta">
+              <span class="meta-star">⭐ ${item.r || '5.0'}</span>
+              <span style="color:#64748b;">•</span>
+              <span style="font-size:12.5px; color:#94a3b8;">${item.v || 12} отзывов</span>
+              <span style="color:#64748b;">•</span>
+              <span class="meta-phone"><a href="tel:${item.p}">📞 ${item.p}</a></span>
+            </div>
+          </div>
+          <div class="card-actions">
+            <a href="${siteUrl}" target="_blank" class="btn-open">🌐 Открыть сайт →</a>
+            <button class="btn-copy" onclick="copyLink('${item.i}')" title="Скопировать ссылку для отправки">📋 Копировать</button>
+          </div>
+        `;
+        frag.appendChild(card);
+      });
+
+      bizGrid.appendChild(frag);
+      renderedCount += batch.length;
+
+      if (renderedCount < filteredRecords.length) {
+        loadMoreBtn.style.display = 'inline-block';
+      } else {
+        loadMoreBtn.style.display = 'none';
+      }
+    }
+
+    loadMoreBtn.addEventListener('click', renderNextBatch);
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+  </script>
+</body>
+</html>
