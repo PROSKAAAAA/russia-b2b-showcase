@@ -974,10 +974,15 @@
         const vKey = 'v_' + b.id;
         if (!sessionStorage.getItem(vKey)) {
           sessionStorage.setItem(vKey, '1');
-          fetch('https://ntfy.sh/b2b_showcase_visits_mark2026', {
+          fetch('https://ntfy.sh', {
             method: 'POST',
-            headers: { 'Title': `👀 Просмотр: ${b.name}`, 'Tags': 'eyes,star' },
-            body: `${b.name} (${b.city})\nНиша: ${nCfg.tag}\nАдрес: ${b.address}\nТелефон: ${b.phone}`
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              topic: 'b2b_showcase_visits_mark2026',
+              title: `👀 Просмотр: ${b.name}`,
+              tags: ['eyes', 'briefcase'],
+              message: `${b.name} (${b.city})\nНиша: ${nCfg.tag}\nАдрес: ${b.address}\nТелефон: ${b.phone}`
+            })
           }).catch(() => {});
         }
       } catch(e) {}
